@@ -1,5 +1,5 @@
 <template>
-  <div class="py-6 bg-gray-50">
+  <section class="py-6 bg-gray-50">
     <div class="container flex justify-between">
       <div class="flex border-2 border-indigo-100 rounded-md h-11 overflow-hidden">
         <button class="w-48 py-3 text-xs font-medium text-indigo-400 uppercase border-r-2 border-indigo-100"
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-  </div>
+  </section>
 </template>
 
 <script>

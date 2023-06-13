@@ -5,7 +5,10 @@ export default {};
 <template>
   <header class="header py-5 bg-white">
     <div class="container flex justify-between">
-      <img class="w-44 h-6 object-cover" src="@/assets/images/logo.png" alt="" />
+      <router-link to="/">
+        <img class="w-44 h-6 object-cover" src="@/assets/images/logo.png" alt="" />
+
+      </router-link>
       <div class="flex items-center gap-11">
         <div class="header-profile flex items-center bg-gray-200 py-1 pl-5 rounded-md cursor-pointer">
           <p class="mr-6">Shohrux</p>

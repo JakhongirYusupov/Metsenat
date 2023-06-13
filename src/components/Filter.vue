@@ -20,18 +20,21 @@
             <input class="p-0 border-0 bg-transparent" id="search-input" :value="value" type="text" placeholder="Izlash"
               maxlength="30" minlength="3" required @input="value = $event.target.value">
           </label>
-          <button type="button" class="flex items-center gap-2.5 ml-5 bg-indigo-100 h-11 px-8 rounded-md">
+          <button type="button" class="flex items-center gap-2.5 ml-5 bg-indigo-100 h-11 px-8 rounded-md"
+            @click="activeFilter = true">
             <i class="fa-solid fa-filter" style="color: #2e7bff;"></i>
             <span class="text-sm font-medium text-blue-700">Filter</span>
           </button>
         </form>
       </div>
     </div>
-
+    <FilterPopUp v-if="activeFilter" :setActiveFilter="setActiveFilter" />
   </section>
 </template>
 
 <script>
+import FilterPopUp from './FilterPopUp.vue';
+
 export default {
   props: {
     activeComponent: {
@@ -47,14 +50,21 @@ export default {
       required: false
     }
   },
+  components: {
+    FilterPopUp
+  },
   data() {
     return {
-      value: ""
+      value: "",
+      activeFilter: false
     }
   },
   methods: {
     handleSubmit() {
       this.$emit('onSearch', this.value)
+    },
+    setActiveFilter() {
+      this.activeFilter = false
     }
   }
 

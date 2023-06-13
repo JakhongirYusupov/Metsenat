@@ -19,6 +19,7 @@ export default {
   methods: {
     setActiveComponent(id) {
       this.activeComponent = id
+      console.log(this.activeComponent);
     },
     onSearch(e) {
       this.search = e

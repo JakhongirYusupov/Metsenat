@@ -1,8 +1,8 @@
 <template>
   <div class="h-screen detail-background">
     <Header />
-    <BackNavbar :name="'Jakhongir Yusupov'" :holat="'Tasdiqlangan'" />
-    <SponsorCard :data="data" />
+    <BackNavbar :name="data?.full_name || ''" :holat="data?.get_status_display || ''" />
+    <SponsorCard :data="data" :setData="setData" />
   </div>
 </template>
 
@@ -22,7 +22,6 @@ export default {
     this.loading = true
     axios.get(GET_SPONSOR_INFO + this.$route.params?.id)
       .then(res => {
-        console.log(res.data);
         this.loading = false
         this.data = res?.data
       }).catch(err => this.error = err?.message)
@@ -32,6 +31,11 @@ export default {
       data: {},
       loading: true,
       error: null
+    }
+  },
+  methods: {
+    setData(newData) {
+      this.data = newData
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="relative z-10" @mouseenter="hoverSelect(true)" @mouseleave="hoverSelect(false)">
     <div
-      class="px-4 py-3 w-full rounded-md bg-indigo-50 border border-indigo-100 flex items-center justify-between cursor-pointer">
-      <span>{{ selectValue }}</span>
+      class="px-4 py-3 w-full rounded-md bg-indigo-50 border border-indigo-100 flex items-center justify-between cursor-pointer content">
+      <span>{{ selectValue ? selectValue : data[0] }}</span>
       <i class="fa-solid fa-chevron-down" style="color: #B5B5C3;"></i>
     </div>
     <div
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       activeSelectBar: false,
-      selectValue: "Barchasi"
+      selectValue: null
     }
   },
   methods: {

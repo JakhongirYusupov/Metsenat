@@ -27,8 +27,10 @@
               { 'text-green-400': item?.get_status_display === 'Tasdiqlangan' },
             ]">
               {{ item?.get_status_display }}</td>
-            <td class="text-center text-base font-medium"><i class="fa-solid fa-eye fa-lg cursor-pointer"
-                style="color: #3366FF"></i>
+            <td class="text-center text-base font-medium">
+              <router-link :to="'/sponsor/' + item?.id">
+                <i class="fa-solid fa-eye fa-lg cursor-pointer" style="color: #3366FF"></i>
+              </router-link>
             </td>
           </tr>
         </tbody>

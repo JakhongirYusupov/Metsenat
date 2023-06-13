@@ -7,7 +7,7 @@
         <i class="fa-solid fa-xmark fa-xl cursor-pointer border-b-2 " style="color: #B2B7C1;"
           @click="setActiveFilter"></i>
       </div>
-      <CustomSelect :selectChange="selectChange" />
+      <CustomSelect :selectChange="selectChange" :data="selectData" />
       <div class="grid gap-4">
         <span class="text-sm font-medium uppercase tracking-wide">Homiylik summasi</span>
         <div class="grid grid-cols-4 gap-3">
@@ -52,7 +52,8 @@ export default {
   data() {
     return {
       data: [],
-      activeSum: -1
+      activeSum: -1,
+      selectData: ['Barchasi', 'Yangi', 'Moderatsiyada', 'Tasdiqlangan', 'Bekor qilingan'],
     }
   },
   mounted() {

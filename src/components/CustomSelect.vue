@@ -25,11 +25,14 @@ export default {
     selectChange: {
       type: Function,
       required: true
+    },
+    data: {
+      type: Array,
+      required: true
     }
   },
   data() {
     return {
-      data: ['Barchasi', 'Yangi', 'Moderatsiyada', 'Tasdiqlangan', 'Bekor qilingan'],
       activeSelectBar: false,
       selectValue: "Barchasi"
     }

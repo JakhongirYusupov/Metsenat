@@ -70,27 +70,3 @@ export default {
 
 }
 </script>
-
-<style>
-.active-dashboard {
-  color: white;
-  border: none;
-  background: linear-gradient(-45deg, #3366FF, #e73c7e);
-  background-size: 400% 400%;
-  animation: activeDashboard 10s ease infinite;
-}
-
-@keyframes activeDashboard {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-</style>

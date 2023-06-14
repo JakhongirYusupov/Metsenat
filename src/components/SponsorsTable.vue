@@ -35,7 +35,7 @@
           </tr>
         </tbody>
       </table>
-      <Pagination :countData="dataCount" :handleFetch="handleFetch" />
+      <Pagination v-if="dataCount" :countData="dataCount" :handleFetch="handleFetch" />
     </div>
   </section>
 </template>
@@ -100,7 +100,7 @@ export default {
     Pagination
   },
   mounted() {
-    this.handleFetch(1, 10)
+    this.handleFetch(this.activePage, this.limit)
   },
   methods: {
     handleFetch(page, limit) {

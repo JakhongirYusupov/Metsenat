@@ -62,3 +62,45 @@ input {
   background-repeat: no-repeat;
   background-position: bottom center;
 }
+
+.active-dashboard {
+  color: white;
+  border: none;
+  background: linear-gradient(-45deg, #3366FF, #e73c7e);
+  background-size: 400% 400%;
+  animation: activeDashboard 10s ease infinite;
+}
+
+@keyframes activeDashboard {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(45, 43, 43, 0.668);
+  border-radius: 20px;
+}
+
+@media only screen and (max-height: 900px) {
+  .form-wrapper {
+    height: 90vh;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+  }
+}

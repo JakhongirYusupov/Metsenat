@@ -29,7 +29,7 @@
           @click="$event => data.activePage = index + 1">{{ index + 1 }}</div>
 
         <div class="h-8 w-8 flex items-center justify-center border bg-white rounded-md cursor-pointer"
-          :class="{ 'cursor-auto opacity opacity-40': data.activePage === 't'.repeat((this.countData / this.data.limit) + 1).split('').length }"
+          :class="{ 'cursor-auto opacity-40': data.activePage === 't'.repeat((this.countData / this.data.limit) + 1).split('').length }"
           @click="$event => {
             if (data.activePage < 't'.repeat((this.countData / this.data.limit) + 1).split('').length) return ++data.activePage
             else return data.activePage

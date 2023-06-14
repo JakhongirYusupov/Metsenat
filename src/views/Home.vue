@@ -3,11 +3,13 @@ import Header from '@/components/Header.vue'
 import Filter from "@/components/Filter.vue"
 import PriceInfo from '../components/PriceInfo.vue';
 import SponsorsTable from '../components/SponsorsTable.vue';
+import StudentTable from '../components/StudentTable.vue';
 export default {
   components: {
     Header,
     Filter,
     PriceInfo,
+    StudentTable,
     SponsorsTable
   },
   data() {
@@ -34,5 +36,7 @@ export default {
     <PriceInfo :class="[{ 'scaleHidden': activeComponent !== 1 }, { 'scaleActive': activeComponent === 1 }]" />
     <SponsorsTable :class="[{ 'scaleHidden': activeComponent !== 2 }, { 'scaleActive': activeComponent === 2 }]"
       :searchData="activeComponent === 2 ? search : ''" />
+    <StudentTable :class="[{ 'scaleHidden': activeComponent !== 3 }, { 'scaleActive': activeComponent === 3 }]"
+      :searchData="activeComponent === 3 ? search : ''" />
   </main>
 </template>

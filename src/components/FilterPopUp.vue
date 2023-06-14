@@ -1,7 +1,7 @@
 <template>
   <div class="bg-transparent popup-wrapper">
     <div class="overlay" @click="setActiveFilter"></div>
-    <div class="py-7 px-8 bg-white rounded-md z-10 w-full max-w-xl grid gap-7">
+    <div class="py-7 px-8 bg-white rounded-md z-10 w-full max-w-xl grid gap-7 form-wrapper">
       <div class="flex items-center pb-7 border-b-2  justify-between">
         <span class="text-2xl font-bold">Filter</span>
         <i class="fa-solid fa-xmark fa-xl cursor-pointer border-b-2 " style="color: #B2B7C1;"

@@ -1,16 +1,16 @@
 <template>
   <form class="bg-transparent popup-wrapper" @submit.prevent @submit="handleSubmit">
     <div class="overlay" @click="setActiveEdit"></div>
-    <div class="py-7 px-8 bg-white rounded-md z-10 w-full max-w-xl grid gap-7">
+    <div class="py-7 px-8 bg-white rounded-md z-10 w-full max-w-xl grid gap-7 form-wrapper">
       <div class="flex items-center pb-7 border-b-2  justify-between">
         <span class="text-2xl font-bold">Filter</span>
         <i class="fa-solid fa-xmark fa-xl cursor-pointer border-b-2" @click="setActiveEdit" style="color: #B2B7C1;"></i>
       </div>
-      <div class="grid grid-cols-2 border-2 border-indigo-100 rounded-md h-11 overflow-hidden">
-        <button type="button" class="py-3 text-xs font-medium text-indigo-400 uppercase "
+      <div class="grid grid-cols-2 border-2 border-indigo-100 rounded-md">
+        <button type="button" class="rounded-s text-xs font-medium text-indigo-400 uppercase h-11"
           :class="{ 'active-dashboard': activeBtn === 1 }" @click="activeBtn = 1">Jismoniy
           shaxs</button>
-        <button type="button" class="py-3 text-xs font-medium text-indigo-400 uppercase "
+        <button type="button" class="rounded-e text-xs font-medium text-indigo-400 uppercase h-11"
           :class="{ 'active-dashboard': activeBtn === 2 }" @click="activeBtn = 2">Yuridik shaxs</button>
       </div>
       <div class="grid gap-2">

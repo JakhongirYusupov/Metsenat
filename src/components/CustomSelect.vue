@@ -6,7 +6,7 @@
       <i class="fa-solid fa-chevron-down" style="color: #B5B5C3;"></i>
     </div>
     <div
-      class="rounded-md rounded-lg shadow-md bg-white overflow-hidden border border-indigo-100 absolute inset-x-0 top-12"
+      class="rounded-md rounded-lg shadow-md bg-white overflow-hidden border border-indigo-100 absolute inset-x-0 top-12 customSelectBar"
       :class="[{ 'scaleHidden': !activeSelectBar }, { 'scaleActive': activeSelectBar }]">
       <div v-for="(item, index) in data" :key="index" @click="$event => {
         selectChange(index)
@@ -45,3 +45,10 @@ export default {
 
 }
 </script>
+
+<style>
+.customSelectBar {
+  max-height: 240px;
+  overflow-y: scroll;
+}
+</style>

@@ -1,5 +1,13 @@
 <template>
   <div class="container">
+    <div class="flex pb-7 justify-end">
+      <router-link to="/create-student">
+        <button class="font-xs font-medium text-white bg-blue-600 px-8 py-2.5 rounded-md flex items-center gap-3">
+          <i class="fa-solid fa-plus fa-lg" style="color: #ffffff;"></i>
+          <span>Talaba qo‘shish</span>
+        </button>
+      </router-link>
+    </div>
     <table class="w-full">
       <thead class="rounded-md overflow-hidden">
         <tr>
@@ -20,7 +28,7 @@
           <td class="text-center text-base font-medium">{{ item?.given }} <span class="text-gray-400">UZS</span> </td>
           <td class="text-center text-base font-medium">{{ item?.contract }} <span class="text-gray-400">UZS</span> </td>
           <td class="text-center text-base font-medium">
-            <router-link :to="'/sponsor/' + item?.id">
+            <router-link :to="'/student/' + item?.id">
               <i class="fa-solid fa-eye fa-lg cursor-pointer" style="color: #3366FF"></i>
             </router-link>
           </td>
@@ -28,6 +36,7 @@
       </tbody>
     </table>
     <Pagination v-if="dataCount" :countData="dataCount" :handleFetch="handleFetch" />
+    <Spinner v-if="loading" />
   </div>
 </template>
 
@@ -35,6 +44,7 @@
 import Pagination from "@/components/Pagination.vue"
 import axios from "axios";
 import { GET_STUDENTS } from "@/utils/api.js"
+import Spinner from '../components/Spinner.vue';
 
 export default {
   data() {
@@ -105,7 +115,8 @@ export default {
     }
   },
   components: {
-    Pagination
+    Pagination,
+    Spinner
   },
 }
 </script>

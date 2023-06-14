@@ -1,5 +1,5 @@
 <template>
-  <div class="countainer flex justify-center pt-10">
+  <div class="container flex justify-center pt-10">
     <div class="w-full max-w-4xl bg-white rounded-md p-8 shadow-md">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Homiy haqida</h2>

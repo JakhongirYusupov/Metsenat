@@ -36,6 +36,7 @@
         </tbody>
       </table>
       <Pagination v-if="dataCount" :countData="dataCount" :handleFetch="handleFetch" />
+      <Spinner v-if="loading" />
     </div>
   </section>
 </template>
@@ -45,6 +46,8 @@ import axios from "axios"
 import Pagination from "./Pagination.vue"
 import { GET_SPONSORS } from "@/utils/api.js"
 import { serverApi } from "../utils/api"
+import Spinner from '../components/Spinner.vue';
+
 export default {
   data() {
     return {
@@ -97,7 +100,8 @@ export default {
     }
   },
   components: {
-    Pagination
+    Pagination,
+    Spinner
   },
   mounted() {
     this.handleFetch(this.activePage, this.limit)

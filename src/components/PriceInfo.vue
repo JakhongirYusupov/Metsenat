@@ -29,14 +29,19 @@
         </div>
       </div>
     </div>
+    <Spinner v-if="loading" />
   </section>
 </template>
 
 <script>
 import axios from 'axios';
 import { GET_DASHBOARD } from '@/utils/api.js'
+import Spinner from '../components/Spinner.vue';
 
 export default {
+  components: {
+    Spinner
+  },
   data() {
     return {
       data: [],
@@ -47,6 +52,7 @@ export default {
   mounted() {
     axios.get(GET_DASHBOARD)
       .then((res) => {
+        this.loading = false
         this.data = res?.data
       })
       .catch((err) => {

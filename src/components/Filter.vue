@@ -28,7 +28,7 @@
         </form>
       </div>
     </div>
-    <FilterPopUp v-if="activeFilter" :setActiveFilter="setActiveFilter" />
+    <FilterPopUp v-if="activeFilter" :setActiveFilter="setActiveFilter" :activeComponent="activeComponent" />
   </section>
 </template>
 

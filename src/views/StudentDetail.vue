@@ -5,6 +5,7 @@
     <StudentCard :data="data" :setActiveEdit="setActiveEdit" />
     <ListSponsorOfStudent />
     <StudentEditPopUp v-if="activeEdit" :setActiveEdit="setActiveEdit" :data="data" :setData="setData" />
+    <Spinner v-if="loading" />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import axios from "axios";
 import { GET_STUDENT_INFO } from "../utils/api";
 import ListSponsorOfStudent from "../components/ListSponsorOfStudent.vue";
 import StudentEditPopUp from "@/components/StudentEditPopUp.vue"
+import Spinner from "../components/Spinner.vue";
 
 export default {
   components: {
@@ -23,14 +25,8 @@ export default {
     StudentEditPopUp,
     StudentCard,
     BackNavBar,
+    Spinner,
     Header
-  },
-  mounted() {
-    axios.get(GET_STUDENT_INFO + this.$route.params?.id)
-      .then((res) => {
-        this.data = res?.data
-      })
-      .catch(err => this.error = err.message)
   },
   data() {
     return {
@@ -39,6 +35,17 @@ export default {
       error: null,
       activeEdit: false
     }
+  },
+  mounted() {
+    axios.get(GET_STUDENT_INFO + this.$route.params?.id)
+      .then((res) => {
+        this.loading = false
+        this.data = res?.data
+      })
+      .catch(err => {
+        this.loading = false
+        this.error = err.message
+      })
   },
   methods: {
     setActiveEdit(value) {

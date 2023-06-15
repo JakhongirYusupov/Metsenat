@@ -1,6 +1,6 @@
 <script>
-import Header from '@/components/Header.vue'
-import Filter from "@/components/Filter.vue"
+import Header from '../components/Header.vue'
+import Filter from "../components/Filter.vue"
 import PriceInfo from '../components/PriceInfo.vue';
 import SponsorsTable from '../components/SponsorsTable.vue';
 import StudentTable from '../components/StudentTable.vue';

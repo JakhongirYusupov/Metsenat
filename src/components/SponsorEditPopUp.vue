@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import CustomSelect from "@/components/CustomSelect.vue"
+import CustomSelect from "./CustomSelect.vue"
 import { GET_PAYMENT_TYPE, GET_TRAFFIC_LIST, PUT_SPONSOR } from "../utils/api";
 import axios from "axios";
 export default {

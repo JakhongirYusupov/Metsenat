@@ -35,7 +35,7 @@
 
 <script>
 import axios from 'axios';
-import { GET_DASHBOARD } from '@/utils/api.js'
+import { GET_DASHBOARD } from '../utils/api.js'
 import Spinner from '../components/Spinner.vue';
 
 export default {

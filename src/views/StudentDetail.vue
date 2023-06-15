@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue"
-import BackNavBar from "@/components/BackNavBar.vue"
+import Header from "../components/Header.vue"
+import BackNavBar from "../components/BackNavbar.vue"
 import StudentCard from "../components/StudentCard.vue";
 import axios from "axios";
 import { GET_STUDENT_INFO } from "../utils/api";
 import ListSponsorOfStudent from "../components/ListSponsorOfStudent.vue";
-import StudentEditPopUp from "@/components/StudentEditPopUp.vue"
+import StudentEditPopUp from "../components/StudentEditPopUp.vue"
 import Spinner from "../components/Spinner.vue";
 
 export default {

@@ -7,7 +7,7 @@
         <i class="fa-solid fa-xmark fa-xl cursor-pointer border-b-2 " style="color: #B2B7C1;" @click="setPopUp"></i>
       </div>
       <div class="flex justify-center">
-        <img class="w-36 h-36 mb-4 image-scale" src="@/assets/images/success.png" alt="">
+        <img class="w-36 h-36 mb-4 image-scale" src="../assets/images/success.png" alt="">
       </div>
       <h3 class="text-2xl text-center font-bold">{{ name }}</h3>
       <div class="flex justify-center">

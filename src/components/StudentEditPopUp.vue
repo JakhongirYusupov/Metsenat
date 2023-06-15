@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import CustomSelect from "@/components/CustomSelect.vue"
+import CustomSelect from "./CustomSelect.vue"
 import axios from "axios";
 import { GET_INSTITUTE_LIST, GET_TRAFFIC_LIST, PUT_STUDENT } from "../utils/api";
 

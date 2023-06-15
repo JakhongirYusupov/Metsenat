@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import Pagination from "@/components/Pagination.vue"
+import Pagination from "./Pagination.vue"
 import axios from "axios";
-import { GET_STUDENTS } from "@/utils/api.js"
+import { GET_STUDENTS } from "../utils/api.js"
 import Spinner from '../components/Spinner.vue';
 
 export default {

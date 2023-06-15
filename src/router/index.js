@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/Home.vue";
-import Login from "@/views/Login.vue";
-import SponsorDetail from "@/views/SponsorDetail.vue";
-import AddStudent from "@/views/AddStudent.vue";
-import StudentDetail from "@/views/StudentDetail.vue";
+import Login from "../views/Login.vue";
+import SponsorDetail from "../views/SponsorDetail.vue";
+import AddStudent from "../views/AddStudent.vue";
+import StudentDetail from "../views/StudentDetail.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

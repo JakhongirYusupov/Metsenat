@@ -44,8 +44,7 @@
 <script>
 import axios from "axios"
 import Pagination from "./Pagination.vue"
-import { GET_SPONSORS } from "@/utils/api.js"
-import { serverApi } from "../utils/api"
+import { GET_SPONSORS, serverApi } from "../utils/api.js"
 import Spinner from '../components/Spinner.vue';
 
 export default {

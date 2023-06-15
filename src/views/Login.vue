@@ -1,7 +1,7 @@
 <template>
   <main class="flex items-center justify-center h-screen px-5">
     <div class="max-w-sm w-full grid gap-12">
-      <img src="@/assets/images/login-logo.png" alt="">
+      <img src="../assets/images/login-logo.png" alt="">
       <form class="p-8 bg-white rounded-xl flex flex-col" @submit.prevent @submit="handleSubmit">
         <h1 class="font-bold text-2xl mb-11">Kirish</h1>
         <label class="flex flex-col mb-6">
@@ -24,7 +24,7 @@
             <span class="font-medium text-sm">I’m not a robot</span>
           </div>
           <div class="flex flex-col items-center">
-            <img class="w-8 h-8 object-fit" :class="{ 'robot-img': form.checkbox }" src="@/assets/images/notrobot.png"
+            <img class="w-8 h-8 object-fit" :class="{ 'robot-img': form.checkbox }" src="../assets/images/notrobot.png"
               alt="error">
             <span class="font-light text-xs">reCAPTCHA</span>
             <span class="font-light text-xs">Privacy-Terms</span>
@@ -41,7 +41,7 @@
 
 <script>
 import axios from 'axios';
-import { LOGIN } from '@/utils/api.js'
+import { LOGIN } from '../utils/api.js'
 
 export default {
   data() {

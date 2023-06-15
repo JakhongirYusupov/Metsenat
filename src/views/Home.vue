@@ -52,7 +52,6 @@ export default {
 
   },
   mounted() {
-    console.log(import.meta.url)
     const token = localStorage.getItem('token')
     if (!token) this.$router.push("/login")
   }

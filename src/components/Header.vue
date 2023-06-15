@@ -2,7 +2,7 @@
   <header class="header py-5 bg-white">
     <div class="container flex justify-between">
       <router-link to="/">
-        <img class="w-44 h-6 object-cover" src="../assets/images/metsenat.png" alt="" />
+        <img class="w-44 h-6 object-cover" src="../assets/images/logo.png" alt="" />
 
       </router-link>
       <div class="flex items-center gap-11">

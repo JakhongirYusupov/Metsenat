@@ -15,7 +15,11 @@ export default {
   data() {
     return {
       activeComponent: 1,
-      search: ""
+      search: "",
+      searchStudent: null,
+      searchSponsor: null,
+      filterStudent: null,
+      filterSponsor: null
     }
   },
   methods: {
@@ -24,7 +28,28 @@ export default {
     },
     onSearch(e) {
       this.search = e
+      if (this.activeComponent === 3) this.searchStudent(e)
+      else if (this.activeComponent === 2) this.searchSponsor(e)
+    },
+    onFilter(e) {
+      if (this.activeComponent === 3) this.filterStudent(e)
+      else if (this.activeComponent === 2) this.filterSponsor(e)
+    },
+    studentSearch(func) {
+      this.searchStudent = func
+    },
+    sponsorSearch(func) {
+      this.searchSponsor = func
+    },
+    studentFilter(func) {
+      this.filterStudent = func
+    },
+    sponsorFilter(func) {
+      this.filterSponsor = func
     }
+  },
+  updated() {
+
   },
   mounted() {
     const token = localStorage.getItem('token')
@@ -36,11 +61,12 @@ export default {
 <template>
   <Header />
   <main class="pb-24">
-    <Filter :activeComponent="activeComponent" :setActiveComponent="setActiveComponent" @onSearch="onSearch" />
+    <Filter :activeComponent="activeComponent" :setActiveComponent="setActiveComponent" @onSearch="onSearch"
+      @onFilter="onFilter" />
     <PriceInfo :class="[{ 'scaleHidden': activeComponent !== 1 }, { 'scaleActive': activeComponent === 1 }]" />
     <SponsorsTable :class="[{ 'scaleHidden': activeComponent !== 2 }, { 'scaleActive': activeComponent === 2 }]"
-      :searchData="activeComponent === 2 ? search : ''" />
+      @onSearch="sponsorSearch" @onFilter="sponsorFilter" />
     <StudentTable :class="[{ 'scaleHidden': activeComponent !== 3 }, { 'scaleActive': activeComponent === 3 }]"
-      :searchData="activeComponent === 3 ? search : ''" />
+      @onSearch="studentSearch" @onFilter="studentFilter" />
   </main>
 </template>

@@ -28,7 +28,8 @@
         </form>
       </div>
     </div>
-    <FilterPopUp v-if="activeFilter" :setActiveFilter="setActiveFilter" :activeComponent="activeComponent" />
+    <FilterPopUp v-if="activeFilter" :setActiveFilter="setActiveFilter" :activeComponent="activeComponent"
+      @onFilter="handleEmit" />
   </section>
 </template>
 
@@ -65,6 +66,9 @@ export default {
     },
     setActiveFilter() {
       this.activeFilter = false
+    },
+    handleEmit(e) {
+      this.$emit('onFilter', e)
     }
   }
 

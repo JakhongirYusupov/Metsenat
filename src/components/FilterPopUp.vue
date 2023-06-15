@@ -9,7 +9,10 @@
           @click="setActiveFilter"></i>
       </div>
       <div v-if="activeComponent === 2 || activeComponent == 1" class="grid gap-7">
-        <CustomSelect :selectChange="selectChange" :data="selectData" />
+        <div class="grid gap-4">
+          <span class="text-sm font-medium uppercase tracking-wide">Ariza holati</span>
+          <CustomSelect :selectChange="selectHolat" :data="selectData" />
+        </div>
         <div class="grid gap-4">
           <span class="text-sm font-medium uppercase tracking-wide">Homiylik summasi</span>
           <div class="grid grid-cols-4 gap-3">
@@ -33,21 +36,22 @@
       <div v-if="activeComponent === 3" class="grid gap-7">
         <div class="flex flex-col gap-4 z-20">
           <span class="text-sm font-medium uppercase tracking-wide">Talabalik turi</span>
-          <CustomSelect :selectChange="selectChange" :data="typeStudent" />
+          <CustomSelect :selectChange="selectType" :data="typeStudent" />
         </div>
         <div class="flex flex-col gap-4 z-10">
           <span class="text-sm font-medium uppercase tracking-wide">OTM</span>
-          <CustomSelect :selectChange="selectChange" :data="typeOtm.map(el => el.name)" />
+          <CustomSelect :selectChange="selectOtm" :data="typeOtm.map(el => el.name)" />
         </div>
       </div>
       <div class="border h-0"></div>
       <div class="flex items-center justify-end gap-4">
-        <button
+        <button @click="handleClear"
           class="font-sm font-medium text-blue-600 px-8 py-2.5 border border-blue-600 rounded-md flex items-center gap-3">
           <i class="fa-solid fa-brush" style="color: #2e7bff;"></i>
           <span>Tozalash</span>
         </button>
-        <button class="font-xs font-medium text-white bg-blue-600 px-8 py-2.5 rounded-md flex items-center gap-3">
+        <button class="font-xs font-medium text-white bg-blue-600 px-8 py-2.5 rounded-md flex items-center gap-3"
+          @click="handleFilter">
           <i class="fa-regular fa-eye" style="color: #ffffff;"></i>
           <span>Natijalarni ko‘rish</span>
         </button>
@@ -67,8 +71,14 @@ export default {
       data: [],
       activeSum: -1,
       selectData: ['Barchasi', 'Yangi', 'Moderatsiyada', 'Tasdiqlangan', 'Bekor qilingan'],
-      typeStudent: ['Bakalavr', 'Magistr'],
-      typeOtm: []
+      typeStudent: ["Magistr", "Bakalavr"],
+      typeOtm: [],
+      filterStudent: {
+        type: 0
+      },
+      filterSponsor: {
+        holat: 0
+      }
     }
   },
   mounted() {
@@ -89,13 +99,27 @@ export default {
     CustomSelect
   },
   methods: {
-    selectChange(id) {
-      console.log(this.typeOtm[id]);
+    selectOtm(id) {
+      this.filterStudent.otm = this.typeOtm[id]?.id
+    },
+    selectType(id) {
+      this.filterStudent.type = id
+    },
+    selectHolat(id) {
+      this.filterSponsor.holat = this.selectData[id]
+    },
+    handleFilter(param) {
+      if (this.activeComponent === 3) this.$emit('onFilter', { otm: this.typeOtm[0].id, ...this.filterStudent })
+      else if (this.activeComponent === 2) this.$emit('onFilter', { ...this.filterSponsor, summa: this.data.find(el => el.id === this.activeSum)?.summa || 10000000000 })
+      this.setActiveFilter()
+    },
+    handleClear() {
+      this.$emit('onFilter', { clear: true })
+      this.setActiveFilter()
     }
   }
 }
 </script>
-
 <style>
 .activeSum {
   position: relative;

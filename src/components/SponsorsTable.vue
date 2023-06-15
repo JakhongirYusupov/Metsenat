@@ -93,18 +93,14 @@ export default {
       limit: 10
     }
   },
-  props: {
-    searchData: {
-      type: String,
-      required: true
-    }
-  },
   components: {
     Pagination,
     Spinner
   },
   mounted() {
     this.handleFetch(this.activePage, this.limit)
+    this.$emit('onSearch', this.onSearch)
+    this.$emit('onFilter', this.onFilter)
   },
   methods: {
     handleFetch(page, limit) {
@@ -126,6 +122,23 @@ export default {
           .then((res) => console.log(res))
           .catch((err) => console.log(err))
       }
+    },
+    onSearch(value) {
+      this.dataCount = 0
+      const filtered = this.sponsors?.filter(el => el?.full_name.toLowerCase().includes(value.toLowerCase()))
+      this.sponsors = filtered
+    },
+    onFilter(value) {
+      if (value.clear !== true) {
+        this.dataCount = 0
+        let filtered = []
+        if (value.holat === 0) {
+          filtered = this.sponsors?.filter(el => el?.sum <= value.summa)
+        } else {
+          filtered = this.sponsors?.filter(el => el.get_status_display === value.holat && el.sum < value.summa)
+        }
+        this.sponsors = filtered
+      } else this.handleFetch(1, 10)
     }
   }
 }

@@ -92,6 +92,8 @@ export default {
   },
   mounted() {
     this.handleFetch(this.activePage, this.limit)
+    this.$emit('onSearch', this.onSearch)
+    this.$emit('onFilter', this.onFilter)
   },
   methods: {
     handleFetch(page, limit) {
@@ -107,11 +109,19 @@ export default {
           this.error = err?.message
       })
     },
-  },
-  props: {
-    searchData: {
-      type: String,
-      required: true
+    onSearch(value) {
+      this.dataCount = 0
+      const filtered = this.students?.filter(el => el?.full_name.toLowerCase().includes(value.toLowerCase()))
+      this.students = filtered
+    },
+    onFilter(value) {
+      if (value.clear !== true) {
+        this.dataCount = 0
+        const filtered = this.students?.filter(el => el?.institute?.id === value?.otm && el?.type === value?.type + 1)
+        this.students = filtered
+        return
+      }
+      this.handleFetch(1, 10)
     }
   },
   components: {

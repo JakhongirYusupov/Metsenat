@@ -86,7 +86,6 @@ export default {
   },
   methods: {
     selectChange(value) {
-      console.log(value);
     },
     handleSubmit() {
       const user = { ...this.data, ...this.updateUser }

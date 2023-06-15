@@ -82,7 +82,6 @@ export default {
       this.data.type = ++id
     },
     handleSubmit(e) {
-      console.log(this.data);
       axios.post(POST_STUDENT, this.data)
         .then(res => {
           e.target.reset()

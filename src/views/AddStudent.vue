@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import BackNavbar from "@/components/BackNavBar.vue";
+import BackNavbar from "../components/BackNavbar.vue";
 import Header from "../components/Header.vue";
 import CustomSelect from "../components/CustomSelect.vue";
 import { GET_INSTITUTE_LIST, POST_STUDENT } from "../utils/api";

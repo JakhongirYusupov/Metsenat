@@ -6,13 +6,17 @@
         <h1 class="font-bold text-2xl mb-11">Kirish</h1>
         <label class="flex flex-col mb-6">
           <span class="font-xs font-medium mb-2">LOGIN</span>
-          <input type="text" :value="form.login" placeholder="Kiriting" @input="event => {
+          <input type="text" :value="form.login" placeholder="Username" @input="event => {
             form.login = event.target.value
-          }">
+          }" required minlength="3" maxlength="50">
         </label>
-        <label class="flex flex-col mb-6">
+        <label class="flex flex-col mb-6 relative">
           <span class="font-xs font-medium mb-2">PAROL</span>
-          <input type="text" :value="form.password" placeholder="password">
+          <input :type="istext ? 'text' : 'password'" :value="form.password"
+            @input="event => form.password = event.target.value" placeholder="Password" required minlength="3"
+            maxlength="50">
+          <i class="fa-regular fa-eye fa-lg absolute end-2 top-14 cursor-pointer" @click="istext = !istext"
+            style="color: #000000;"></i>
         </label>
         <div class="flex px-3 bg-gray-100 border  py-2.5 justify-between items-center rounded mb-6 border-gray-300">
           <div class="flex items-center gap-3">
@@ -36,6 +40,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { LOGIN } from '@/utils/api.js'
+
 export default {
   data() {
     return {
@@ -43,12 +50,18 @@ export default {
         login: "",
         password: "",
         checkbox: false
-      }
+      },
+      istext: false
     }
   },
   methods: {
-    handleSubmit(e) {
-      console.log(e);
+    handleSubmit() {
+      axios.post(LOGIN, { username: this.form.login, password: this.form.password })
+        .then(res => {
+          localStorage.setItem('token', res.data.access)
+          this.$router.push("/")
+        })
+        .catch(err => alert('Username yoki password noto\'g\'ri'))
     }
   }
 }

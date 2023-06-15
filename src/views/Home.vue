@@ -25,6 +25,10 @@ export default {
     onSearch(e) {
       this.search = e
     }
+  },
+  mounted() {
+    const token = localStorage.getItem('token')
+    if (!token) this.$router.push("/login")
   }
 }
 </script>

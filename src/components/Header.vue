@@ -1,7 +1,3 @@
-<script>
-export default {};
-</script>
-
 <template>
   <header class="header py-5 bg-white">
     <div class="container flex justify-between">
@@ -16,11 +12,22 @@ export default {};
             <i class="fa-solid fa-user-large fa-lg" style="color: #ffffff"></i>
           </div>
         </div>
-        <i class="fa-solid fa-arrow-right-from-bracket fa-lg cursor-pointer" style="color: #b1b1b8"></i>
+        <i class="fa-solid fa-arrow-right-from-bracket fa-lg cursor-pointer" @click="logOut" style="color: #b1b1b8"></i>
       </div>
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  methods: {
+    logOut() {
+      localStorage.removeItem('token')
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
 
 <style>
 .header {

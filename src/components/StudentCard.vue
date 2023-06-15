@@ -3,13 +3,13 @@
     <div class="w-full max-w-4xl bg-white rounded-md p-8 shadow-md">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Talaba haqida</h2>
-        <button class="flex items-center gap-2.5 rounded-md bg-indigo-100 py-2.5 px-8" @click="activeEdit = true">
+        <button class="flex items-center gap-2.5 rounded-md bg-indigo-100 py-2.5 px-8" @click="setActiveEdit(true)">
           <i class="fa-solid fa-pen-to-square" style="color: #3365FC;"></i>
           <span class="text-sm font-medium text-blue-600">Tahrirlash</span>
         </button>
       </div>
       <div class="flex items-center py-6">
-        <div class="flex items-center bg-indigo-100 py-0.5 px-3" @click="activeEdit = true">
+        <div class="flex items-center bg-indigo-100 py-0.5 px-3">
           <span class="text-sm font-medium text-blue-600 whitespace-nowrap">Asosiy ma’lumotlar</span>
         </div>
         <div class="border w-full"></div>
@@ -26,11 +26,11 @@
       <div class="grid grid-cols-2 pt-6 gap-6">
         <div v-if="data?.phone" class="grid gap-3">
           <span class="text-xs font-medium text-gray-400 uppercase">telefon raqam</span>
-          <p class="text-base font-semibold whitespace-nowrap">{{ data?.phone }}</p>
+          <p class="text-base font-semibold">{{ data?.phone }}</p>
         </div>
       </div>
       <div class="flex items-center py-6">
-        <div class="flex items-center bg-indigo-100 py-0.5 px-3" @click="activeEdit = true">
+        <div class="flex items-center bg-indigo-100 py-0.5 px-3">
           <span class="text-sm font-medium text-blue-600 whitespace-nowrap">O‘qish joyi haqida ma’lumot</span>
         </div>
         <div class="border w-full"></div>
@@ -38,19 +38,19 @@
       <div class="grid grid-cols-2 pt-6 gap-6">
         <div v-if="data?.institute?.name" class="grid gap-3">
           <span class="text-xs font-medium text-gray-400 uppercase">otm</span>
-          <p class="text-base font-semibold whitespace-nowrap">{{ data?.institute?.name }}</p>
+          <p class="text-base font-semibold">{{ data?.institute?.name }}</p>
         </div>
         <div v-if="data?.type" class="grid gap-3">
           <span class="text-xs font-medium text-gray-400 uppercase">Talabalik turi</span>
-          <p class="text-base font-semibold whitespace-nowrap">{{ studentType[data?.type] }}</p>
+          <p class="text-base font-semibold">{{ studentType[data?.type - 1] }}</p>
         </div>
         <div v-if="data?.given" class="grid gap-3">
           <span class="text-xs font-medium text-gray-400 uppercase">Ajratilingan summa</span>
-          <p class="text-base font-semibold whitespace-nowrap">{{ data?.given }} <span>UZS</span></p>
+          <p class="text-base font-semibold">{{ data?.given }} <span>UZS</span></p>
         </div>
         <div v-if="data?.contract" class="grid gap-3">
           <span class="text-xs font-medium text-gray-400 uppercase">Kontrakt miqdori</span>
-          <p class="text-base font-semibold whitespace-nowrap">{{ data?.contract }} <span>UZS</span></p>
+          <p class="text-base font-semibold">{{ data?.contract }} <span>UZS</span></p>
         </div>
       </div>
     </div>
@@ -61,12 +61,16 @@
 export default {
   data() {
     return {
-      studentType: ['Bakalavr', 'Magistr']
+      studentType: ['Bakalavr', 'Magistr', 'Student']
     }
   },
   props: {
     data: {
       type: Object,
+      required: true
+    },
+    setActiveEdit: {
+      type: Function,
       required: true
     }
   }
